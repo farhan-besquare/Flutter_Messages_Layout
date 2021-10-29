@@ -1,6 +1,6 @@
 # flutter_chatlist
 
-A new Flutter project.
+A Flutter Project for Day 4 Besquare Program - Creating a flutter layout for messages/chat list.
 
 ## Getting Started
 
