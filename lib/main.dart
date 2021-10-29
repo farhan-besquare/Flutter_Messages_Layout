@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.amber,
+        primarySwatch: Colors.purple,
       ),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
@@ -77,14 +77,16 @@ class _MyHomePageState extends State<MyHomePage> {
               itemBuilder: (BuildContext context, int index) {
                 return Container(
                   height: 75,
-                  decoration:
-                      BoxDecoration(border: Border.all(color: Colors.grey)),
+                  decoration: BoxDecoration(
+                      color: Colors.purple.shade100,
+                      border: Border.all(color: Colors.grey)),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Container(
                         padding: const EdgeInsets.only(left: 10, right: 20),
                         child: CircleAvatar(
+                          backgroundColor: Colors.white54,
                           radius: 25,
                           backgroundImage: showData[index].containsKey('avatar')
                               ? NetworkImage(showData[index]['avatar'])
@@ -133,10 +135,12 @@ class _MyHomePageState extends State<MyHomePage> {
                             padding: const EdgeInsets.only(right: 10),
                             child: showData[index].containsKey("messages")
                                 ? CircleAvatar(
+                                    backgroundColor: Colors.purple.shade400,
                                     radius: 13,
                                     child: Text(
                                         showData[index]['messages'].toString(),
                                         style: const TextStyle(
+                                            color: Colors.white,
                                             fontWeight: FontWeight.bold)))
                                 : const Text(' '),
                           )
