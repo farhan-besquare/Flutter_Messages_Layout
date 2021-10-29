@@ -1,8 +1,5 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 import 'dart:convert';
-import 'package:flutter/services.dart';
 
 void main() {
   runApp(const MyApp());
@@ -52,16 +49,16 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  List _items = [];
+  // List _items = [];
 
-  Future<void> readJson() async {
-    final String response =
-        await rootBundle.loadString('assets/messages_list.json');
-    final data = await json.decode(response);
-    setState(() {
-      _items = data["items"];
-    });
-  }
+  // Future<void> readJson() async {
+  //   final String response =
+  //       await rootBundle.loadString('assets/messages_list.json');
+  //   final data = await json.decode(response);
+  //   setState(() {
+  //     _items = data["items"];
+  //   });
+  // }
 
   // Widget _buildFixedList(Color color, String _text) {
   //   return Container(
@@ -88,13 +85,19 @@ class _MyHomePageState extends State<MyHomePage> {
             return ListView.builder(
               itemBuilder: (BuildContext context, int index) {
                 return Container(
+                  height: 75,
+                  decoration:
+                      BoxDecoration(border: Border.all(color: Colors.grey)),
                   child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Container(
+                        margin: EdgeInsets.only(left: 10),
                         child: CircleAvatar(
+                          radius: 25,
                           backgroundImage: showData[index].containsKey('avatar')
                               ? NetworkImage(showData[index]['avatar'])
-                              : NetworkImage(
+                              : const NetworkImage(
                                   'https://static.thenounproject.com/png/3134331-200.png'),
                         ),
                       ),
@@ -113,7 +116,14 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                       Container(
                         child: Column(
-                          children: [Text(showData[index]['last_seen_time'])],
+                          children: [
+                            Text(showData[index]['last_seen_time']),
+                            showData[index].containsKey("messages")
+                                ? CircleAvatar(
+                                    child: Text(
+                                        showData[index]['messages'].toString()))
+                                : const Text(' ')
+                          ],
                         ),
                       )
                     ],
